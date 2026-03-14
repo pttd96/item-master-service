@@ -4,22 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Item {
+public class Validation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String itemClass;
     private String subclass;
     private String department;
-    private Double price;
-    private Long buyerId;
+    private Double maxThreshold;
+    private Double minThreshold;
+    private String status;
 
     @CreationTimestamp
     private LocalDateTime createdTime;
@@ -27,14 +27,15 @@ public class Item {
     @UpdateTimestamp
     private LocalDateTime updatedTime;
 
-    public Item() {}
+    public Validation() {}
 
-    public Item(String itemClass, String subclass, String department, Double price, Long buyerId) {
+    public Validation(String itemClass, String subclass, String department, Double maxThreshold, Double minThreshold, String status) {
         this.itemClass = itemClass;
         this.subclass = subclass;
         this.department = department;
-        this.price = price;
-        this.buyerId = buyerId;
+        this.maxThreshold = maxThreshold;
+        this.minThreshold = minThreshold;
+        this.status = status;
     }
 
     public Long getId() {
@@ -69,20 +70,28 @@ public class Item {
         this.department = department;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getMaxThreshold() {
+        return maxThreshold;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setMaxThreshold(Double maxThreshold) {
+        this.maxThreshold = maxThreshold;
     }
 
-    public Long getBuyerId() {
-        return buyerId;
+    public Double getMinThreshold() {
+        return minThreshold;
     }
 
-    public void setBuyerId(Long buyerId) {
-        this.buyerId = buyerId;
+    public void setMinThreshold(Double minThreshold) {
+        this.minThreshold = minThreshold;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public LocalDateTime getCreatedTime() {

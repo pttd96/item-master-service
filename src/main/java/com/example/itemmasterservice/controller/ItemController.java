@@ -38,8 +38,11 @@ public class ItemController {
         if (item == null) {
             return ResponseEntity.notFound().build();
         }
-        item.setName(payload.getName());
-        item.setDescription(payload.getDescription());
+        item.setItemClass(payload.getItemClass());
+        item.setSubclass(payload.getSubclass());
+        item.setDepartment(payload.getDepartment());
+        item.setPrice(payload.getPrice());
+        item.setBuyerId(payload.getBuyerId());
         return ResponseEntity.ok(itemService.save(item));
     }
 
