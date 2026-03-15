@@ -45,6 +45,8 @@ docker compose down
 - `DELETE /buyers/{id}`
 
 ### Validation APIs
+- `GET /validations`
+- `GET /validations/{id}`
 - `POST /validations` (JSON body: `{ "itemClass":"...", "subclass":"...", "department":"...", "maxThreshold":100.0, "minThreshold":1.0, "isActive":true }`)
 
 ## H2 Console

@@ -19,6 +19,14 @@ public class ValidationService {
         return validationRepository.save(validation);
     }
 
+    public List<Validation> findAll() {
+        return validationRepository.findAll();
+    }
+
+    public Validation findById(Long id) {
+        return validationRepository.findById(id).orElse(null);
+    }
+
     public boolean isPriceChangeWithinThreshold(Item item, double newPrice) {
         List<Validation> validations = validationRepository.findByItemClassAndSubclassAndDepartmentAndIsActiveTrue(
                 item.getItemClass(), item.getSubclass(), item.getDepartment());
