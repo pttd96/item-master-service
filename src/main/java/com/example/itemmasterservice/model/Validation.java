@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "validation")
 public class Validation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
