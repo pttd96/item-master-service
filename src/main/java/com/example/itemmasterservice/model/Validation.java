@@ -19,7 +19,7 @@ public class Validation {
     private String department;
     private Double maxThreshold;
     private Double minThreshold;
-    private String status;
+    private boolean isActive;
 
     @CreationTimestamp
     private LocalDateTime createdTime;
@@ -29,13 +29,13 @@ public class Validation {
 
     public Validation() {}
 
-    public Validation(String itemClass, String subclass, String department, Double maxThreshold, Double minThreshold, String status) {
+    public Validation(String itemClass, String subclass, String department, Double maxThreshold, Double minThreshold, boolean isActive) {
         this.itemClass = itemClass;
         this.subclass = subclass;
         this.department = department;
         this.maxThreshold = maxThreshold;
         this.minThreshold = minThreshold;
-        this.status = status;
+        this.isActive = isActive;
     }
 
     public Long getId() {
@@ -86,12 +86,12 @@ public class Validation {
         this.minThreshold = minThreshold;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public LocalDateTime getCreatedTime() {

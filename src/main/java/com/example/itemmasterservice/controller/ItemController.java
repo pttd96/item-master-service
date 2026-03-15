@@ -1,5 +1,7 @@
 package com.example.itemmasterservice.controller;
 
+import com.example.itemmasterservice.dto.ItemUpdate;
+import com.example.itemmasterservice.dto.ItemUpdateResult;
 import com.example.itemmasterservice.model.Item;
 import com.example.itemmasterservice.service.ItemService;
 import org.springframework.http.ResponseEntity;
@@ -29,21 +31,13 @@ public class ItemController {
 
     @PostMapping
     public Item create(@RequestBody Item item) {
-        return itemService.save(item);
+        return itemService.createItem(item);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> update(@PathVariable Long id, @RequestBody Item payload) {
-        Item item = itemService.findById(id);
-        if (item == null) {
-            return ResponseEntity.notFound().build();
-        }
-        item.setItemClass(payload.getItemClass());
-        item.setSubclass(payload.getSubclass());
-        item.setDepartment(payload.getDepartment());
-        item.setPrice(payload.getPrice());
-        item.setBuyerId(payload.getBuyerId());
-        return ResponseEntity.ok(itemService.save(item));
+    public ResponseEntity<ItemUpdateResult> update(@PathVariable Long id, @RequestBody ItemUpdate update) {
+        ItemUpdateResult result = itemService.updateItem(id, update);
+        return result != null ? ResponseEntity.ok(result) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
@@ -54,4 +48,5 @@ public class ItemController {
         itemService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

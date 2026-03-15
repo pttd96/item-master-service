@@ -10,6 +10,24 @@ cd /workspaces/item-master-service
 JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH ./gradlew clean bootRun -x test
 ```
 
+## Run with Docker
+
+Prerequisites: Docker and Docker Compose installed.
+
+To build and run the app in a container:
+
+```bash
+docker compose up --build
+```
+
+The app will be available at `http://localhost:8080`.
+
+To stop the containers:
+
+```bash
+docker compose down
+```
+
 ## Endpoints
 
 ### Item APIs
@@ -27,7 +45,7 @@ JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 PATH=/usr/lib/jvm/java-17-openjdk-a
 - `DELETE /buyers/{id}`
 
 ### Validation APIs
-- `POST /validations` (JSON body: `{ "itemClass":"...", "subclass":"...", "department":"...", "maxThreshold":100.0, "minThreshold":1.0, "status":"active" }`)
+- `POST /validations` (JSON body: `{ "itemClass":"...", "subclass":"...", "department":"...", "maxThreshold":100.0, "minThreshold":1.0, "isActive":true }`)
 
 ## H2 Console
 
